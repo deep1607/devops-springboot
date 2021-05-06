@@ -2,11 +2,11 @@ node {
     def mvnHome
     stage('Prepare') {
         git url:'https://github.com/deep1607/devops-springboot.git',branch:'develop'
-        mvnHome = tool 'mvn'
+        mvnHome = tool 'maven'
     }
     stage('Build'){
     
-    	bat "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+    	bat "'${mvnHome}\bin\mvn' -Dmaven.test.failure.ignore clean package"
 			
 	}
 	
