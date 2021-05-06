@@ -6,7 +6,7 @@ node {
     }
     stage('Build'){
     
-    	sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+    	bat "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
 			
 	}
 	
@@ -16,11 +16,11 @@ node {
 	}
 	
 	stage('Integration Test'){
-		sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+		bat "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean verify"
 	}
 	
 	stage('Sonar'){
-		sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+		bat "'${mvnHome}/bin/mvn' sonar:sonar"
 	}
 	
 	stage('Deploy'){
