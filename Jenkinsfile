@@ -5,11 +5,8 @@ node {
         mvnHome = tool 'mvn'
     }
     stage('Build'){
-    	if (isUnix()) {
-    		sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
-    	} else {
-    		bat (/"${mvnHome}/bin/mvn" -Dmaven.test.failure.ignore clean package/)	
-    	}
+    
+    	sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
 			
 	}
 	
@@ -19,19 +16,11 @@ node {
 	}
 	
 	stage('Integration Test'){
-		if (isUnix()) {
-    		sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean verify"
-    	} else {
-    		bat (/"${mvnHome}/bin/mvn" -Dmaven.test.failure.ignore clean verify/)	
-    	}
+		sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
 	}
 	
 	stage('Sonar'){
-		if (isUnix()) {
-    		sh "'${mvnHome}/bin/mvn' sonar:sonar"
-    	} else {
-    		bat (/"${mvnHome}/bin/mvn" sonar:sonar/)	
-    	}
+		sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
 	}
 	
 	stage('Deploy'){
