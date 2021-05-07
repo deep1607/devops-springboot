@@ -30,11 +30,11 @@ node {
       }
    }
 stage('Deploy'){
-bat 'curl -u admin:admin -F file=target/**.war http://localhost:7080/manager/text/deploy?path=/ibmdevops&update=true'
+sh 'curl -u admin:admin -T /target/**.war "http://localhost:7080/manager/text/deploy?path=/ibmdevops&update=true"'
 }
 
 stage('Smoke') {
-bat "curl --retry-delay 10 --retry 5 http://localhost:7080/ibmdevops/api/v1/products"
+sh "curl --retry-delay 10 --retry 5 http://localhost:7080/ibmdevops/api/v1/products"
 }
 
 
