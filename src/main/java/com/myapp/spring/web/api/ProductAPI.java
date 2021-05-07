@@ -104,11 +104,11 @@ public class ProductAPI {
     (repository.findByProductNameOrPrice(productName.orElse(""), price.orElse(0.0)).get(), HttpStatus.OK);
     }
 	
+	//http://localhost:8080/api/v1/products/findByName
 	@GetMapping("/findByName")
     public ResponseEntity<List<Product>> findProductsByName
     (
     		@RequestParam("productName") Optional<String> productName){
-        
         
         
     return new ResponseEntity<List<Product>>
