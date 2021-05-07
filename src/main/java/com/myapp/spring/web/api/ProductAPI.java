@@ -105,7 +105,7 @@ public class ProductAPI {
     }
 	
 	//http://localhost:8080/api/v1/products/findByName
-	//new comment
+	// find by name ADDED
 	@GetMapping("/findByName")
     public ResponseEntity<List<Product>> findProductsByName
     (
