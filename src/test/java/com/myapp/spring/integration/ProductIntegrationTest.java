@@ -58,6 +58,7 @@ public class ProductIntegrationTest {
 	
 	}
 	
+	
 	@AfterEach
 	public void cleanUp() {
 		repository.deleteAll();
